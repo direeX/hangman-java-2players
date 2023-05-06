@@ -12,13 +12,13 @@ public class Hangman {
 
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("1 or 2 players?");
+        System.out.println("1 czy 2 graczy?");
         String players = keyboard.nextLine();
 
         String word;
 
         if (players.equals("1")) {
-            Scanner scanner = new Scanner(new File("C:/Users/johnm/hangman/words_alpha.txt"));
+            Scanner scanner = new Scanner(new File("C:\\Users\\direeX\\Desktop\\Projekty_IntelliJ\\hangman-java-2\\slowa.txt"));
             List<String> words = new ArrayList<>();
 
             while (scanner.hasNext()) {
@@ -29,10 +29,10 @@ public class Hangman {
             word = words.get(rand.nextInt(words.size()));
         }
         else {
-            System.out.println("Player 1, please enter your word:");
+            System.out.println("Gracz numer 1, podaj Twoje hasło:");
             word = keyboard.nextLine();
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-            System.out.println("Ready for player 2! Good luck!");
+            System.out.println("Gracz numer 2, zgaduj hasło!");
         }
 
         //System.out.println(word);
@@ -45,8 +45,8 @@ public class Hangman {
             printHangedMan(wrongCount);
 
             if (wrongCount >= 6) {
-                System.out.println("You lose!");
-                System.out.println("The word was: " + word);
+                System.out.println("Przegrana!");
+                System.out.println("Hasło: " + word);
                 break;
             }
 
@@ -56,17 +56,17 @@ public class Hangman {
             }
 
             if(printWordState(word, playerGuesses)) {
-                System.out.println("You win!");
+                System.out.println("Wygrana!");
                 break;
             }
 
-            System.out.println("Please enter your guess for the word:");
+            System.out.println("Podaj hasło:");
             if(keyboard.nextLine().equals(word)) {
-                System.out.println("You win!");
+                System.out.println("Wygrana!");
                 break;
             }
             else {
-                System.out.println("Nope! Try again.");
+                System.out.println("Źle! Spróbuj jeszcze raz.");
             }
         }
     }
@@ -106,7 +106,7 @@ public class Hangman {
     }
 
     private static boolean getPlayerGuess(Scanner keyboard, String word, List<Character> playerGuesses) {
-        System.out.println("Please enter a letter:");
+        System.out.println("Podaj literę:");
         String letterGuess = keyboard.nextLine();
         playerGuesses.add(letterGuess.charAt(0));
 
